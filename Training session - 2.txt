@@ -1,0 +1,49 @@
+AWS:
+
+VPC
+	4 Subnet (2 Public/2 Private)
+	3 Routing table (1 public, 1 private, 1 Main table)
+	1 Internet Gateway
+	Elastic IP's
+	NAt Gateway
+	Route Table in Subnet association selection public (0.0.0.0/0)&igw[id] and private (0.0.0.0/0)&NAT[id]
+		
+
+
+Create Instance in EC2 with created VCP
+	- In security group In Inbound create a rulefor 8080
+		Add SSH - 22
+	Create a key pair and download pem file
+
+Connect to instance through putty
+	download putgen and putty
+
+	Using puttygen create ppk file from pem and using putty connect to instance by giving 'ppk' file in SSH-Ath
+
+After logging in
+
+install java -  sudo yum -y install java
+follow the step for Jenkins installation from "https://www.digitalocean.com/community/tutorials/how-to-set-up-jenkins-for-continuous-development-integration-on-centos-7"
+
+Run Jenkins-  sudo service jenkins
+
+
+
+
+Loginto Jenkins:
+http://52.41.61.94:8080/
+Create password using - sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Create admin login
+
+Create a job with free style project
+	In mean time create a repo in Github
+	Install git in EC2 Instance by giving command - sudo yum install git
+Link the git hub repo to Jenkins
+
+In Build triggers
+	In Poll SCM- H/5 * * * *
+
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-jenkins-for-continuous-development-integration-on-centos-7
+
+http://www.slideshare.net/udaypal1/scaling-jenkins
